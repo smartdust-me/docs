@@ -261,8 +261,54 @@ This is what I've come up with:
 
 # Appium test 
 The last stage of the pipeline above involves an Appium test.
-I store it in a subfolder called "client" in my project repository. You can go ahead and copy it.
+It's a Node project in a subfolder "client" in my project repository. You can go ahead and copy it.
+It declares dependencies on Appium and XCUITest iOS driver.
 
+### How it works
+Appium server communicates with iOS devices using a proxy app called [WebDriverAgent](https://github.com/facebookarchive/WebDriverAgent).
+It runs an infinite XC Test (iOS test framework) case on the device and listens to WebDriver commands in W3C specification format.
+Then it translates WebDriver commands to native XC Test commands and runs them on the device.
+To be able to use multiple devices which all listen on the same WDA port, we need to forward them to different ports.
+This is executed via the go-ios tool in lines 34 and 35 of my Jenkinsfile.
+I recommend to go through the whole pipeline manually to make sure everything works.
 
+### Appium client code
 
+    const wdio = require("webdriverio");
 
+    const sharedCapabilities = {
+        'appium:automationName': 'XCUITest',
+        'platformName': 'iOS',
+        'appium:usePrebuiltWDA': true,
+        //startIWDP: true,
+    }
+    const devicesCapabilities = [{
+        'appium:udid': '25c925bfbb0ed425fa7c4e30d62b6be82fe15298',
+        'appium:webDriverAgentUrl': 'http://localhost:7777'
+    }, {
+        'appium:udid': 'c81fadec2a2affb46093bb3036cf1f49db2dc187',
+        'appium:webDriverAgentUrl': 'http://localhost:7778'
+    }]
+    const opts = {
+        path: '/',
+        port: 4723,
+        //maxInstances: 1,
+    };
+
+    async function main() {
+        clients = []
+        for(i=0; i<devicesCapabilities.length; i++){
+            opts.capabilities = {...sharedCapabilities, ...devicesCapabilities[i]}
+            clients[i] = await wdio.remote(opts)
+        }
+        for (const client of clients) {
+            await client.activateApp("jog.Kalculator")
+            const elem = await client.$('~clearButton')
+            await elem.click()
+            client.pause(2000)
+            await elem.click()
+            await client.deleteSession()
+        }
+    }
+
+    main();
