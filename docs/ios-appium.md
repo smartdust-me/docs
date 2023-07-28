@@ -1,5 +1,5 @@
-# iOS CI-CD pipeline with Appium 
-Simple example of what's needed to set up and run a CI-CD pipeline of an iOS application. <br/>
+# iOS CI-CD pipeline with Jenkins and Appium 
+Simple example of what's needed to set up and run a CI-CD pipeline of an iOS application with Smartdust Lab. <br/>
 The pipeline involves: 
 - building the app from source,
 - connecting to iOS devices on a Smartdust Lab instance,
@@ -31,10 +31,10 @@ You might be in need of a more advanced setup.
 
 ### Fastlane
 Fastlane is a widely popular tool facilitating iOS building and deployment processes. 
-Download and get it running with the help of the [official docs](https://docs.fastlane.tools/)
+Download and get it running with the help of the [official docs](https://docs.fastlane.tools/).
 You need to install Ruby for Fastlane to work and please use Ruby version manager, [rbenv](https://github.com/rbenv/rbenv)
 for that. It will make things much easier down the road.
-I use it only for building the app, nothing fancy. Here is my configuration file (*fastfile*):
+I use fastlane only for building the app, nothing fancy. Here is my configuration file (*fastfile*):
 
     default_platform(:ios)
 
@@ -76,7 +76,7 @@ You need to add the Mac machine that we set up in the earlier step as a Jenkins 
 Go to `Manage Jenkins -> Nodes -> New Node` and go through the wizard.
 It's pretty straighforward given you have an SSH server already set up on your Mac. 
 If in trouble, there is plenty of online tutorials on how to do that.
-The goal is to have your Mac machine displayed as available in the `Nodes` list on Jenkins.
+The objective is to have your Mac machine displayed as available in the `Nodes` list on Jenkins.
 
 ### Creating a pipeline
 Now go ahead and create a Jenkins pipeline through the web interface - `Dashboard -> New item -> Pipeline`
@@ -177,7 +177,7 @@ Install ideviceinstaller
 
 ### Smartdust CLI client
 Download, install and test run the Smartdust CLI client according to our [tutorial](https://smartdust.atlassian.net/wiki/spaces/SMARTDUST/pages/967049221/CLI+client).
-It will enable Jenkins to connect to headlessly connect to test devices.
+It will enable Jenkins to headlessly connect to test devices.
 
 You should be able to list connected iOS devices by calling `idevice_id -l`.
 After that, check if `ideviceinstaller` works by installing your .ipa app on an iPhone connected via the Smartdust CLI client.
@@ -193,7 +193,7 @@ Another iOS toolchain that we'll use: [repo](https://github.com/danielpaulus/go-
 
 # Creating pipeline script
 Create a file called `Jenkinsfile` in the home directory of your project.
-This is what I've come up with:
+This is an example of this file for this project:
 
     pipeline {
         agent none
@@ -205,7 +205,7 @@ This is what I've come up with:
                 }
                 steps {
                     checkout scm
-                    sh 'gem install bundler'
+                    sh 'gem install bundler' //fastlane setup
                     sh 'bundle install'
                     sh 'bundle exec fastlane build'
                     stash includes: 'Kalculator.ipa', name: 'BUILT_IPA'
@@ -257,20 +257,21 @@ This is what I've come up with:
     }
 
 - Change the agent labels to match your Jenkins nodes config
+- Change SD_URL and SD_TOKEN variables to your own
 - The PATH environment variables being set uses a bit dirty trick that points to a version of Ruby and Node installed by `rbenv` and `nvm`.
 
 # Appium test 
-The last stage of the pipeline above involves an Appium test.
+The last stage of the pipeline above is an Appium test.
 It's a Node project in a subfolder "client" in my project repository. You can go ahead and copy it.
 It declares dependencies on Appium and XCUITest iOS driver.
 
 ### How it works
 Appium server communicates with iOS devices using a proxy app called [WebDriverAgent](https://github.com/facebookarchive/WebDriverAgent).
-It runs an infinite XC Test (iOS test framework) case on the device and listens to WebDriver commands in W3C specification format.
+It runs an infinite XCUITest (iOS test framework) test case on the device and listens to WebDriver commands in W3C specification format.
 Then it translates WebDriver commands to native XC Test commands and runs them on the device.
-To be able to use multiple devices which all listen on the same WDA port, we need to forward them to different ports.
+We need to forward each device's WDA port to a localhost port for communication.
 This is executed via the go-ios tool in lines 34 and 35 of my Jenkinsfile.
-I recommend to go through the whole pipeline manually to make sure everything works.
+I recommend doing all pipeline steps manually to make sure everything works.
 
 ### Appium client code
 
@@ -280,7 +281,6 @@ I recommend to go through the whole pipeline manually to make sure everything wo
         'appium:automationName': 'XCUITest',
         'platformName': 'iOS',
         'appium:usePrebuiltWDA': true,
-        //startIWDP: true,
     }
     const devicesCapabilities = [{
         'appium:udid': '25c925bfbb0ed425fa7c4e30d62b6be82fe15298',
@@ -303,7 +303,7 @@ I recommend to go through the whole pipeline manually to make sure everything wo
         }
         for (const client of clients) {
             await client.activateApp("jog.Kalculator")
-            const elem = await client.$('~clearButton')
+            const elem = await client.$('~clearButton') // accessibility ID
             await elem.click()
             client.pause(2000)
             await elem.click()
@@ -312,3 +312,15 @@ I recommend to go through the whole pipeline manually to make sure everything wo
     }
 
     main();
+
+There are other Appium WebDriver clients in other programming languages, they work analogously.
+
+For explanation of each capability, visit the XCUITest driver [documentation website](https://appium.github.io/appium-xcuitest-driver/4.32/)
+
+Note that in this example an element is located using its accessibility ID.
+This is great as this type of reference doesn't change with localization, but what's even more important
+is that you can assign accessibility IDs in Android apps as well. In result, you can write **cross-platform tests** which
+saves you time and hassle.
+### Important notes regarding Appium tests
+- Your tests may fail if there is a system overlay pop-up currently displaying on top of everything.
+E.g. "Log in to Apple ID". 
