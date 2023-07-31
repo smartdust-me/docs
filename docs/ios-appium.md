@@ -84,7 +84,7 @@ The configuration should be standard.
 Set the Pipeline definition to `Pipeline script from SCM.` Enter your project repository credentials.
 Put `Jekinsfile` in the `Script path` option.
 My config looks like this:
-    ![](/img/ios-appium/pipeline-config.png)
+    ![](/ios-appium/pipeline-config.png)
 
 # Setting up CI-CD tools
 We need a computer to connect to iOS devices on Smartdust Lab, install the application on them and run Appium test.
@@ -259,6 +259,10 @@ This is an example of this file for this project:
 - Change the agent labels to match your Jenkins nodes config
 - Change SD_URL and SD_TOKEN variables to your own
 - The PATH environment variables being set uses a bit dirty trick that points to a version of Ruby and Node installed by `rbenv` and `nvm`.
+- Note that when I call `smartdust-client`, I use the `--all` flag.  
+The reason is that in my case, all iPhones on my Smartdust Lab instance are connected to the same provider, so this is fine.
+You wouldn't be able to connect to all devices if they were connected via different providers,
+the tool would try for a long time and fail.
 
 # Appium test 
 The last stage of the pipeline above is an Appium test.
