@@ -92,94 +92,13 @@ We could set up another Jenkins slave node, but for simplicity I decided to go a
 Jenkins node - the same machine on which the server is running.
 
 ### Libimobiledevice tools
-[libimobiledevice](https://libimobiledevice.org/) is a library and tool suite designed to enable communication with iOS
-devices on any operating system. Unfortunately, we need the latest versions and that can only be done by building from source.
-Following instructions will do it on Ubuntu:
-
-Install libimobiledevice depenencies:
-
-    sudo apt-get install \
-        python3-dev \
-        build-essential \
-        checkinstall \
-        git \
-        autoconf \
-        automake \
-        libtool-bin \
-        pkg-config \
-        libplist-dev \
-        libzip-dev \
-        usbmuxd \
-        libusbmuxd-dev \
-        libssl-dev \
-        ifuse
-
-Install libplist
-
-    git clone https://github.com/libimobiledevice/libplist.git
-    cd libplist
-
-    ./autogen.sh
-    make
-    sudo make install
-
-    cd ..
-    rm -rf libplist
-
-Install libimobiledevice-glue
-
-    git clone https://github.com/libimobiledevice/libimobiledevice-glue.git
-    cd libimobiledevice-glue
-
-    ./autogen.sh
-    make
-    sudo make install
-
-    cd ..
-    rm -rf libimobiledevice-glue
-
-Install libusbmuxd
-
-    git clone https://github.com/libimobiledevice/libusbmuxd.git
-    cd libusbmuxd
-
-    ./autogen.sh
-    make
-    sudo make install
-
-    cd ..
-    rm -rf libusbmuxd
-
-Install libimobiledevice 
-
-    git clone https://github.com/libimobiledevice/libimobiledevice.git
-    cd libimobiledevice
-
-    ./autogen.sh
-    make
-    sudo make install
-
-    cd ..
-    rm -rf libimobiledevice
- 
-Install ideviceinstaller 
-
-    git clone https://github.com/libimobiledevice/ideviceinstaller.git
-    cd ideviceinstaller
-
-    ./autogen.sh
-    make
-    sudo make install
-
-    cd ..
-    rm -rf ideviceinstaller
-
+Install `libimobiledevice` using the [instructions](/docs/docs/libimobiledevice-install)
 
 ### Smartdust CLI client
-Download, install and test run the Smartdust CLI client according to our [tutorial](https://smartdust.atlassian.net/wiki/spaces/SMARTDUST/pages/967049221/CLI+client).
+Download, install and test run the Smartdust CLI client according to our [tutorial](/docs/docs/cli-client).
 It will enable Jenkins to headlessly connect to test devices.
 
-You should be able to list connected iOS devices by calling `idevice_id -l`.
+You should be able to list connected iOS devices by calling `idevice_id -l` (from `libimobiledevice` toolchain).
 After that, check if `ideviceinstaller` works by installing your .ipa app on an iPhone connected via the Smartdust CLI client.
 
 ### Node.js (for Appium)
