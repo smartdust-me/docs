@@ -96,10 +96,6 @@ If you want to connect to more devices and/or use particular types of devices, u
 
 ## Connecting to iOS devices
 
-Under the hood, remotely connecting to iOS devices utilizes `usbfluxd` and `usbmuxd` programs. 
-`usbmuxd` imitates the way that Mac OS communicates with devices over USB but in Linux.  
-`usbfluxd` is for the "remote" part, it enables connecting to devices over the network, while those devices are physically connected to another computer. 
-The `sd_remoteios` tool uses those.
 Therefore, the Smartdust CLI client heavily depends on the above programs when handling iOS devices. You need to make sure that `usbmuxd` service works by typing:
 
     sudo systemctl start usbmuxd

@@ -19,7 +19,7 @@ All project files are available in a Github [repository](https://github.com/jord
 First, you need to make sure your project in XCode builds and runs on simulators without any issues.
 
 Then, you need to use the `sd_remoteios` tool from Smartdust to connect to iOS devices. 
-Follow the instructions from [its documentation](https://smartdust.atlassian.net/wiki/spaces/SMARTDUST/pages/955187201/Remote+iOS+Device)
+Follow the instructions from [its documentation](/docs/docs/sd_remoteios).
 :::info
 You only need to connect to ONE connection URL and you will be instantly connected to every iOS device connected to the same provider.
 :::
