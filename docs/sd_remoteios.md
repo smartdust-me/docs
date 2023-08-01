@@ -4,7 +4,12 @@
 In itself, it's not a feature rich tool, so for automation purposes for example, we recommend using the [Smartdust CLI Client](/docs/docs/cli-client) that utilizes `sd_remoteios` under the hood.
 
 ## Installation 
-Grab the appropriate binary for your OS from [here] and put it in a directory that's in your PATH so that you can call it everywhere.
+Grab the appropriate binary for your OS and put it in a directory that's in your PATH so that you can call it everywhere.
+Also, if your downloaded file contains an architectural postfix(e.g. `x64`), rename it to `sd_remoteios`.
+**After clicking the link, refresh the page to download**
+- [Mac OS universal binary](/sd_remoteios/sd_remoteios) 
+- [Mac OS ARM64 binary](/sd_remoteios/sd_remoteios_arm64)
+- [Linux x64 binary](/sd_remoteios/sd_remoteios_x64)
 
 **Linux**: additionally, you need to install [usbmuxd](https://github.com/libimobiledevice/usbmuxd) and make sure it works:
 
