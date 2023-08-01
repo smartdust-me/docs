@@ -4,8 +4,11 @@
 In itself, it's not a feature rich tool, so for automation purposes for example, we recommend using the [Smartdust CLI Client](/docs/docs/cli-client) that utilizes `sd_remoteios` under the hood.
 
 ## Installation 
-Grab the appropriate binary for your OS and put it in a directory that's in your PATH so that you can call it everywhere.
-Also, if your downloaded file contains an architectural postfix (e.g. `x64`), rename it to `sd_remoteios`.
+- Grab the appropriate binary for your OS
+- Put it in a directory that's in your PATH so that you can call it everywhere.
+- Add run permissions for the file (`chmod +x PATH_TO_FILE`)
+- Also, if your downloaded file contains an architectural postfix (e.g. `x64`), rename it to `sd_remoteios`.
+- Mac OS - you need to "Trust" the application the first time you run it. Locate it in Finder and select "Open" from right-click context menu.
 
 **After clicking the link, refresh the page to download.**
 - [Mac OS universal binary](/sd_remoteios/sd_remoteios) 
