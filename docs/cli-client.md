@@ -22,8 +22,8 @@ It enables usage of CI/CD tools such as Jenkins.
     - ADB installed and working
 - iOS:
     - [usbmuxd](https://github.com/libimobiledevice/usbmuxd) installed
-    - [sd_remoteios] installed (needs to be in your PATH)
-    - libimobiledevice installed - use the [instructions] (idevice_id program needs to be in your PATH)
+    - [sd_remoteios](/docs/docs/sd_remoteios) installed (needs to be in your PATH)
+    - libimobiledevice installed - use the [instructions](/docs/docs/libimobiledevice) (idevice_id program needs to be in your PATH)
 
 :::caution
 A Smartdust account with administrator privileges cannot be used with this tool, it doesn’t work!
@@ -34,7 +34,7 @@ You cannot reuse the same ADB key in another Smartdust account.
 
 Steps:
 
-Download the [binary](#binaries) and make sure that the client is installed properly by invoking
+Follow the installation instructions from above and make sure that the client is installed properly by invoking
 
     smartdust-client
 in your terminal window. You should see a description of the tool’s options.
@@ -43,6 +43,7 @@ in your terminal window. You should see a description of the tool’s options.
 Obtain a Smartdust Lab connection token from a Smartdust Lab instance - for example at public.smartdust.me. 
 After logging in, click “Settings” on the upper menu bar:
 ![](/cli-client/upper-menu-settings.png)
+
 Then go to the “Keys” tab and in the “Access Tokens” pane click on the “+” icon on the right.
 ![](/cli-client/access-token-settings.png)
 Name your token however you like and after clicking “Generate New Token” your token will be displayed as a string of characters. 
@@ -65,7 +66,7 @@ Setting the variables we need in a Bash or zsh shell goes as follows:
 
 It might differ if you’re using a different shell, check for suitable instructions online.
 
-As you can see, the Smartdust Lab URL must be passed in the full, including the https:// protocol signifier. 
+As you can see, the Smartdust Lab URL must be passed in the full, including the `https://` protocol signifier. 
 However, don’t add any trailing characters after the domain name of the Lab which might be displayed in your browser.
 
 ## Connecting to Android devices
@@ -96,7 +97,8 @@ If you want to connect to more devices and/or use particular types of devices, u
 
 ## Connecting to iOS devices
 
-Therefore, the Smartdust CLI client heavily depends on the above programs when handling iOS devices. You need to make sure that `usbmuxd` service works by typing:
+When connecting to iOS devices, Smartdust CLI heavily depends on a couple of external dependencies. 
+You need to make sure that `usbmuxd` service works by typing:
 
     sudo systemctl start usbmuxd
 and check if it’s running:
@@ -111,13 +113,16 @@ Also, verify if `idevice_id` is working:
     idevice_id
 To be sure that so far everything’s fine, you can go ahead to Smartdust Lab, pick a free iOS device and copy the command for Remote Debug:
 ![](/cli-client/remote-debug.png)
+
 Paste it in your terminal and hit enter. It should say that you are connected successfully.
 
 In another terminal window type
 
     ideviceinfo
 If a bunch of properties are printed on the screen, congratulations! That was the hardest part.
-
+:::tip
+We advise to read the [`sd_remoteios` documentation](/docs/docs/sd_remoteios) for better understanding.
+:::
 To connect to an iOS device in a Smartdust Lab instance, you can copy its serial number and execute the following command:
 
     smartdust-client connect -f serial:adeb2bc11f101da2a3de1d0c52a2f32b474f5127
@@ -136,3 +141,9 @@ If you, for example, try to connect to all devices and they are connected to dif
 In order to disconnect from all devices, both via ADB, `sd_remoteios` and also to free them in the Lab, use:
 
     smartdust-client disconnect --all
+
+## Troubleshooting
+:::tip
+On a rare occasion that different users will start the Smartdust CLI Client on the same device, there might be a permission issue with some temporary files the program creates.
+In that case, forcefully delete the `/tmp/stf.log` and `/tmp/stf.pid` files.
+:::

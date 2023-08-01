@@ -1,12 +1,13 @@
 # `sd_remoteios` - iOS Remote Connect tool
 
-`sd_remoteios` is a program available for Mac OS and Linux that connects iOS devices from a remote Smartdust Lab so that they're visible on your PC as if they ware plugged in via USB.
+`sd_remoteios` is a program available for Mac OS and Linux that connects iOS devices from a remote Smartdust Lab so that they're visible on your PC as if they were plugged in via USB.
 In itself, it's not a feature rich tool, so for automation purposes for example, we recommend using the [Smartdust CLI Client](/docs/docs/cli-client) that utilizes `sd_remoteios` under the hood.
 
 ## Installation 
 Grab the appropriate binary for your OS and put it in a directory that's in your PATH so that you can call it everywhere.
-Also, if your downloaded file contains an architectural postfix(e.g. `x64`), rename it to `sd_remoteios`.
-**After clicking the link, refresh the page to download**
+Also, if your downloaded file contains an architectural postfix (e.g. `x64`), rename it to `sd_remoteios`.
+
+**After clicking the link, refresh the page to download.**
 - [Mac OS universal binary](/sd_remoteios/sd_remoteios) 
 - [Mac OS ARM64 binary](/sd_remoteios/sd_remoteios_arm64)
 - [Linux x64 binary](/sd_remoteios/sd_remoteios_x64)
@@ -33,10 +34,21 @@ In the command itself, delete the `./` characters before the executable name, e.
     sudo sd_remoteios -c xxx.smartdust.me:12345 
 
 You can verify the connection by using programs from the `libimobiledevice` toolchain, for example `ideviceinfo` should print a lot of data about one of the connected phones.
+:::caution
+For your devices to be visible in XCode and similar apps, you need to open the application only **after** you've made a connection. 
+If they were previously running, you need to fully restart them.
+:::
 :::note
 Due to the current connection mechanism, you get connected to all the iOS devices from one provider.
 Additionally, as for now, `sd_remoteios` and consequently Smartdust CLI Client can only connect to one "connection string" at a time.
 :::
-
-
-
+## Troubleshooting
+:::info
+Sometimes, especially in bad network condition, your connection to the remote devices might suddenly drop. In that case, restart `sd_remoteios`.
+You can also obtain a new connection URL by click `Disable` and `Enable` again on the Remote Debug panel in Smartdust Lab device page.
+:::
+:::tip
+You might encounter an error saying that `/tmp/usbfluxd` has locked permission. You can resolve that by deleting the file yourself:
+    
+    sudo rm /tmp/usbfluxd
+:::

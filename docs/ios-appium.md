@@ -20,12 +20,10 @@ First, you need to make sure your project in XCode builds and runs on simulators
 
 Then, you need to use the `sd_remoteios` tool from Smartdust to connect to iOS devices. 
 Follow the instructions from [its documentation](/docs/docs/sd_remoteios).
-:::info
-You only need to connect to ONE connection URL and you will be instantly connected to every iOS device connected to the same provider.
-:::
+
 You should be able to select iOS devices from the Smartdust Lab instance in XCode to run your app on them.
 Check if that works. You need to resolve any code signing issues that may arise. 
-**Run your application on each and every device that you want to use for testing.**
+**Test-run your application on each and every device that you want to use for testing.**
 For simplicity's sake I used only automatic code signing and development builds in this example.
 You might be in need of a more advanced setup.
 
@@ -79,7 +77,7 @@ If in trouble, there is plenty of online tutorials on how to do that.
 The objective is to have your Mac machine displayed as available in the `Nodes` list on Jenkins.
 
 ### Creating a pipeline
-Now go ahead and create a Jenkins pipeline through the web interface - `Dashboard -> New item -> Pipeline`
+Now go ahead and create a Jenkins pipeline through the web interface - `Dashboard -> New item -> Pipeline`.
 The configuration should be standard. 
 Set the Pipeline definition to `Pipeline script from SCM.` Enter your project repository credentials.
 Put `Jekinsfile` in the `Script path` option.
@@ -92,7 +90,7 @@ We could set up another Jenkins slave node, but for simplicity I decided to go a
 Jenkins node - the same machine on which the server is running.
 
 ### Libimobiledevice tools
-Install `libimobiledevice` using the [instructions](/docs/docs/libimobiledevice-install)
+Install `libimobiledevice` using the [instructions](/docs/docs/libimobiledevice)
 
 ### Smartdust CLI client
 Download, install and test run the Smartdust CLI client according to our [tutorial](/docs/docs/cli-client).
@@ -194,6 +192,7 @@ It runs an infinite XCUITest (iOS test framework) test case on the device and li
 Then it translates WebDriver commands to native XC Test commands and runs them on the device.
 We need to forward each device's WDA port to a localhost port for communication.
 This is executed via the go-ios tool in lines 34 and 35 of my Jenkinsfile.
+
 I recommend doing all pipeline steps manually to make sure everything works.
 
 ### Appium client code
@@ -238,7 +237,7 @@ I recommend doing all pipeline steps manually to make sure everything works.
 
 There are other Appium WebDriver clients in other programming languages, they work analogously.
 
-For explanation of each capability, visit the XCUITest driver [documentation website](https://appium.github.io/appium-xcuitest-driver/4.32/)
+For explanation of each capability, visit the XCUITest driver [documentation website](https://appium.github.io/appium-xcuitest-driver/4.32/).
 
 Note that in this example an element is located using its accessibility ID.
 This is great as this type of reference doesn't change with localization, but what's even more important
