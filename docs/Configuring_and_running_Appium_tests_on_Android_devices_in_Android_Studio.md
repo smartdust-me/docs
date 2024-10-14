@@ -4,13 +4,13 @@ title: Configuring and running Appium tests on Android devices in Android Studio
 ---
 Every developer knows that however daunting it might be, testing is a crucial part of building and deploying software. Mobile apps are not in the very least an exception to this rule due to the immense number of devices and operating systems configurations they have to support. Thankfully, there are many tools facilitating the testing process and one of them, Appium, is the main concern of the article.
 
-- What is Appium and why should I care?
+## What is Appium and why should I care?
 
 Appium is an open source automation tool for testing native applications, mobile-web applications and hybrid applications on Android or iOS utilizing Selenium Webdriver technology. Anticipating your questions — Selenium is a popular web applications testing automation framework.
 
 Appium allows you to use your favorite programming language to write automatic instrumentation tests for your mobile applications (and websites but this is outside of the scope of this article). There is cross-platform support, meaning that you can easily write UI tests for both Android and iOS devices for example. Moreover, you can run your tests on many devices simultaneously.
 
-- How does Appium work?
+## How does Appium work?
 
 Essentially, Appium is just an HTTP server running on Node.js which exposes a REST API and implements Selenium WebDriver. When Appium receives a connection request from the client, it then listens for commands which upon receiving are translated to device-specific commands, sent and executed. Responses from the test devices are forwarded back to the client.
 
@@ -109,22 +109,22 @@ class AppiumTest {
 
 Obviously, you need to change the constants at the top to match your case.
 
-ADB_DEVICE_UID — the ID of your device connected to Android Debug Bridge. This can be checked using adb devices command.
+`ADB_DEVICE_UID` — the ID of your device connected to Android Debug Bridge. This can be checked using adb devices command.
 
-APP_PACKAGE — the package name of your Android app — for example com.example.application
+`APP_PACKAGE` — the package name of your Android app — for example com.example.application
 
-ACTIVITY — the app Activity that you wish to perform tests on — you can simply copy the main activity name from your AndroidMainfest.xml . For example .MainActivity
+`ACTIVITY` — the app Activity that you wish to perform tests on — you can simply copy the main activity name from your AndroidMainfest.xml . For example .MainActivity
 
-PATH_TO_APK — path to the .apk file on your workstation that is built by Android Studio. I recommend to manually execute the following steps in Android Studio:
+`PATH_TO_APK` — path to the .apk file on your workstation that is built by Android Studio. I recommend to manually execute the following steps in Android Studio:
 
 - Top-bar menu -> Build -> Clean Project
 - Build -> Rebuild Project
 
 After these steps (each of them takes a while, have patience) your APK should be present in your project files under app/build/outputs/apk/debug/app-debug.apk. (The location might differ due to custom project configurations, Android Studio version and more.) Right-click the file and copy the absolute path to it and paste it. Note that in order to localize it you may have to change the project structure view to “Project”. It might not be visible in the default “Android” view.
 
-APPIUM_SERVER_URL — this is the only constant that you should probably leave as is. If you change Appium configuration to utilize a different port, different API endpoints, or run it on a remote machine with a different IP address then you will need to tune it.
+`APPIUM_SERVER_URL` — this is the only constant that you should probably leave as is. If you change Appium configuration to utilize a different port, different API endpoints, or run it on a remote machine with a different IP address then you will need to tune it.
 
-“element_id” — replace it with the layout xml id of any element that is displayed on the tested activity. Of course the capabilities of Appium go way beyond mere verification of an element being present, this is just a basic demonstration.
+`“element_id”` — replace it with the layout xml id of any element that is displayed on the tested activity. Of course the capabilities of Appium go way beyond mere verification of an element being present, this is just a basic demonstration.
 
 - Configuring TestNg
 
