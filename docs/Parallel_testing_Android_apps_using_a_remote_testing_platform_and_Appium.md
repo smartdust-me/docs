@@ -11,7 +11,7 @@ Android app development is peculiar in its nature due to a phenomenon called And
 
 All that combined means that in order to ensure a proper user experience, the released builds have to be thoroughly tested against a number of devices and OS configurations, the more, the better. And that’s where tools like Appium and remote testing platforms step in and shine.
 
-- How to run parallel tests using Appium
+## How to run parallel tests using Appium
 
 - Follow the steps from my previous tutorial. You should be able to successfully run an Appium test on a local Android device or an emulator.
 - Modify the AppiumTest.kt file from my previous tutorial, parametrizing the setUp method using a special TestNg annotation. Just like this, remember about setting the constants and “element_id” to your custom values.
