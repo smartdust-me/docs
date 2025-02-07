@@ -1,11 +1,58 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * i scoped locally.
+ */
+
+
 .features {
   display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  width: 100%;
+  align-items: stretch;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 10%, rgba(240, 240, 255, 0.95) 90%);
+  border-radius: 1rem;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+
+.featureItem {
+  position: relative;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(200, 200, 255, 0.4);
 }
+
+.featureItem:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(150, 150, 255, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+
+.featureSvg {
+  height: 80px;
+  width: 80px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease-out, filter 0.3s ease-out;
+  filter: drop-shadow(0px 0px 5px rgba(100, 80, 255, 0.3));
+}
+
+@media screen and (max-width: 996px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .featureItem {
+    width: 90%;
+  }
+}
+

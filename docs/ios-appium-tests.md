@@ -9,7 +9,7 @@ Components needed:
 
 - Port forwarding from the iOS device to the test running client (Linux machine)
 
-This can be done using iproxy or go-ios tools: https://github.com/danielpaulus/go-ios 
+This can be done using iproxy or go-ios tools: `https://github.com/danielpaulus/go-ios`
 
  
 - Appium installed on test machine 
@@ -50,9 +50,9 @@ Pay attention to the “usePrebuiltWDA” field. If it isn’t set, Appium will 
 Further reading:
 
 
-https://daniel-paulus.medium.com/automate-ios-devices-the-almost-mac-free-way-973e8760f9df
+`https://daniel-paulus.medium.com/automate-ios-devices-the-almost-mac-free-way-973e8760f9df` 
 
-https://docs.eggplantsoftware.com/mobilegateway/
+`https://docs.eggplantsoftware.com/mobilegateway/`
  
 
  

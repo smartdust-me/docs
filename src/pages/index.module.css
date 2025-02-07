@@ -4,20 +4,39 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
-  text-align: center;
   position: relative;
   overflow: hidden;
-}
-
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
-}
-
-.buttons {
+  width: 100%;
+  padding: 6rem 0;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(135deg, #5c3a8d, #4a2977);
+  color: #fff;
+  border-radius: 12px;
+  animation: pulseBackground 6s infinite alternate ease-in-out;
 }
+
+.heroContent h1 {
+  font-size: 2.6rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.heroContent p {
+  font-size: 1.4rem;
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+}
+
+
+/* Responsywność */
+@media screen and (max-width: 996px) {
+  .heroBanner { padding: 5rem 2rem; }
+  .heroContent h1 { font-size: 2.2rem; }
+  .heroContent p { font-size: 1.2rem; }
+}
+

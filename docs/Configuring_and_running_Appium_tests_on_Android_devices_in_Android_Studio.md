@@ -16,7 +16,7 @@ Essentially, Appium is just an HTTP server running on Node.js which exposes a RE
 
 ![Appium architecture scheme](/img/Appium-Architecture.webp)
 
-- How to install and configure Appium for usage in Android Studio
+## How to install and configure Appium for usage in Android Studio
 
 1. Install Appium dependencies
 
@@ -28,7 +28,7 @@ Ensure that NPM is installed correctly for command line usage and simply run npm
 
 3. Set up Android Studio
 
-Ensure that Android Studio with all its dependencies are installed correctly, with special attention to Java SDK and Android SDK setup. Also verify that ADB is running correctly and that your test device is recognized. Developer Options and USB debugging must be enabled on the device. You might need to restart ADB. For more detailed help visit the official guide at https://developer.android.com/studio/command-line/adb.
+Ensure that Android Studio with all its dependencies are installed correctly, with special attention to Java SDK and Android SDK setup. Also verify that ADB is running correctly and that your test device is recognized. Developer Options and USB debugging must be enabled on the device. You might need to restart ADB. For more detailed help visit the official guide at `https://developer.android.com/studio/command-line/adb`.
 
 4. Add environment variables
 
@@ -42,17 +42,17 @@ Normally, the 2 tools mentioned above are installed with Android Studio and are 
 
 5. Verify Appium install
 
-After all the steps above, Appium should be ready to launch with a simple command appium in the command line. Should you encounter any problems, there is a tool for that — “appium-doctor” which verifies all the Appium dependencies. For more information see https://github.com/appium/appium-doctor.
+After all the steps above, Appium should be ready to launch with a simple command appium in the command line. Should you encounter any problems, there is a tool for that — “appium-doctor” which verifies all the Appium dependencies. For more information see `https://github.com/appium/appium-doctor`.
 
-For more detailed Appium installation instructions see https://appium.io/docs/en/about-appium/getting-started/?lang=en.
+For more detailed Appium installation instructions see `https://appium.io/docs/en/about-appium/getting-started/?lang=en`.
 
 - Set up Android Studio tests
 
-For running Appium tests I recommend using the TestNG testing library. It is important NOT to use the Android Studio Instrumentation Tests default configuration. TestNG is supported out-of-the-box by Android Studio as well. You just need to add it to the list of dependencies in Gradle or any other dependency management tool you’re using. Grab the latest version from the Maven repository https://mvnrepository.com/artifact/org.testng/testng. Other significant dependencies you are going to need are as follow:
+For running Appium tests I recommend using the TestNG testing library. It is important NOT to use the Android Studio Instrumentation Tests default configuration. TestNG is supported out-of-the-box by Android Studio as well. You just need to add it to the list of dependencies in Gradle or any other dependency management tool you’re using. Grab the latest version from the Maven repository `https://mvnrepository.com/artifact/org.testng/testng`. Other significant dependencies you are going to need are as follow:
 
-Appium Java client — https://mvnrepository.com/artifact/io.appium/java-client
+Appium Java client — `https://mvnrepository.com/artifact/io.appium/java-client`
 
-Selenium Java — https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java/4.4.0
+Selenium Java — `https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java/4.4.0`
 
 - Create your first test
 
@@ -120,7 +120,7 @@ Obviously, you need to change the constants at the top to match your case.
 - Top-bar menu -> Build -> Clean Project
 - Build -> Rebuild Project
 
-After these steps (each of them takes a while, have patience) your APK should be present in your project files under app/build/outputs/apk/debug/app-debug.apk. (The location might differ due to custom project configurations, Android Studio version and more.) Right-click the file and copy the absolute path to it and paste it. Note that in order to localize it you may have to change the project structure view to “Project”. It might not be visible in the default “Android” view.
+After these steps (each of them takes a while, have patience) your APK should be present in your project files under `app/build/outputs/apk/debug/app-debug.apk`. (The location might differ due to custom project configurations, Android Studio version and more.) Right-click the file and copy the absolute path to it and paste it. Note that in order to localize it you may have to change the project structure view to “Project”. It might not be visible in the default “Android” view.
 
 `APPIUM_SERVER_URL` — this is the only constant that you should probably leave as is. If you change Appium configuration to utilize a different port, different API endpoints, or run it on a remote machine with a different IP address then you will need to tune it.
 
@@ -138,10 +138,10 @@ Ensure that Appium is running in the terminal. If not, launch it with the appium
 
 - Troubleshooting
 
-In case of any problems, read the test output, logcat messages and Appium server logs that are displayed in the terminal by default. It might be required to use the infamous “Invalidate caches and restart” option in Android Studio. Follow troubleshooting guides at https://appium.io/docs/en/writing-running-appium/other/troubleshooting/. A good option to try as well is to download the Appium desktop GUI app and seperately, Appium Inspector. These two tools enable you to configure and launch Appium tests without writing code.
+In case of any problems, read the test output, logcat messages and Appium server logs that are displayed in the terminal by default. It might be required to use the infamous “Invalidate caches and restart” option in Android Studio. Follow troubleshooting guides at `https://appium.io/docs/en/writing-running-appium/other/troubleshooting/`. A good option to try as well is to download the Appium desktop GUI app and seperately, Appium Inspector. These two tools enable you to configure and launch Appium tests without writing code.
 
 - What next?
 
-For writing more sophisticated and interactive instrumentation tests that perform things like clicking on buttons, swiping, double-tapping, etc. the official Appium Java client documentation is the most reliable and obvious source of knowledge — https://javadoc.io/doc/io.appium/java-client/latest/index.html. For more digestible reference, there are some cheatsheets available online, like this one: https://www.automatetheplanet.com/most-complete-appium-kotlin-cheat-sheet/.
+For writing more sophisticated and interactive instrumentation tests that perform things like clicking on buttons, swiping, double-tapping, etc. the official Appium Java client documentation is the most reliable and obvious source of knowledge — `https://javadoc.io/doc/io.appium/java-client/latest/index.html`. For more digestible reference, there are some cheatsheets available online, like this one: `https://www.automatetheplanet.com/most-complete-appium-kotlin-cheat-sheet/`.
 
 Thank you for bearing with me till the end of this article. I plan to write a follow-up tutorial on setting up Appium tests on a remote battery of devices, so follow me if you would like to see it!
