@@ -11,14 +11,14 @@ In itself, it's not a feature rich tool, so for automation purposes for example,
 - Mac OS - you need to "Trust" the application the first time you run it. Locate it in Finder and select "Open" from right-click context menu.
 
 **After clicking the link, refresh the page to download.**
-- [Mac OS universal binary](/sd_remoteios/sd_remoteios) 
-- [Mac OS ARM64 binary](/sd_remoteios/sd_remoteios_arm64)
-- [Linux x64 binary](/sd_remoteios/sd_remoteios_x64)
+- [Mac OS universal binary](/sd_remoteios/sd_remoteios.zip) 
+- [Mac OS ARM64 binary](/sd_remoteios/sd_remoteios_arm64.zip)
+- [Linux x64 binary](/sd_remoteios/sd_remoteios_x64.zip)
 
 **Linux**: additionally, you need to install [usbmuxd](https://github.com/libimobiledevice/usbmuxd) and make sure it works:
 
-    sudo systemctl start usbmuxd
-    sudo systemctl status usbmuxd
+    `sudo systemctl start usbmuxd`
+    `sudo systemctl status usbmuxd`
 
 We also recommend for all users to install `libimobiledevice` tools for easier debugging. More info [here](/docs/docs/libimobiledevice).
 
@@ -30,11 +30,11 @@ If on Mac OS, copy the command and execute it.
 
 On Linux, you should first make sure that the `usbmuxd` service is working.
 
-    sudo systemctl enable usbmuxd
+    `sudo systemctl enable usbmuxd`
 
 In the command itself, delete the `./` characters before the executable name, e.g.
     
-    sudo sd_remoteios -c xxx.smartdust.me:12345 
+    `sudo sd_remoteios -c xxx.smartdust.me:12345`
 
 You can verify the connection by using programs from the `libimobiledevice` toolchain, for example `ideviceinfo` should print a lot of data about one of the connected phones.
 :::caution
@@ -53,5 +53,5 @@ You can also obtain a new connection URL by click `Disable` and `Enable` again o
 :::tip
 You might encounter an error saying that `/tmp/usbfluxd` has locked permission. You can resolve that by deleting the file yourself:
     
-    sudo rm /tmp/usbfluxd
+    `sudo rm /tmp/usbfluxd`
 :::
