@@ -1,42 +1,59 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
+/* src/pages/index.module.css */
 
 .heroBanner {
   position: relative;
-  overflow: hidden;
   width: 100%;
-  padding: 6rem 0;
+  padding: 5rem 0;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #5c3a8d, #4a2977);
-  color: #fff;
-  border-radius: 12px;
-  animation: pulseBackground 6s infinite alternate ease-in-out;
+  background: linear-gradient(135deg, #4a2977, #3a1a66);
+  color: #ffffff;
 }
 
-.heroContent h1 {
-  font-size: 2.6rem;
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.8rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.heroContent p {
+.subtitle {
   font-size: 1.4rem;
-  opacity: 0.8;
-  margin-bottom: 1.5rem;
+  opacity: 0.85;
+  margin-bottom: 2rem;
 }
 
+/* Przycisk CTA */
+.callToAction {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: #59359a;
+  color: #ffffff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.callToAction:hover {
+  background-color: #6a44b2;
+}
 
 /* Responsywność */
 @media screen and (max-width: 996px) {
-  .heroBanner { padding: 5rem 2rem; }
-  .heroContent h1 { font-size: 2.2rem; }
-  .heroContent p { font-size: 1.2rem; }
+  .heroBanner {
+    padding: 4rem 1rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .subtitle {
+    font-size: 1.2rem;
+  }
 }
 
