@@ -10,32 +10,31 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Instant Setup',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed 
-        and used to get your website up and running quickly.
+        Connect to Smartdust quickly and get your remote test environment 
+        up and running in minutes—no hassle, no downtime.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Real Devices, Real Results',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we'll do the chores. 
-        Simply place your content in the <code>docs</code> directory.
+        Test on actual Android or iOS devices hosted in the cloud. 
+        Experience true reliability and skip the guesswork of emulators.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Instant Launch',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus
-        can be extended while reusing the same header and footer.
+        Kickstart your testing environment in minutes with minimal setup.
       </>
     ),
   },
