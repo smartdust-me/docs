@@ -27,6 +27,15 @@ This might differ slightly based on your device, consult online documentation an
 3. Enable **USB Debugging**.
 4. Enable **Disable adb authorization timeout**
 
+### 🔒 Additional Considerations for Some OEMs
+
+Depending on the device manufacturer and system customization layer, additional steps may be required:
+
+- Some systems require enabling **Install via USB** within Developer Options.
+- Ensure the device is in **File Transfer (MTP)** mode rather than "Charging only."
+- In certain environments, additional permissions such as background operation for developer tools or explicit trust confirmation may be necessary.
+- If no prompt for USB debugging appears, make sure the phone is unlocked and the screen is active.
+
 ## Step 4: Connecting the Device
 
 1. Turn the provider server on.
@@ -49,4 +58,6 @@ If the USB debugging prompt does not appear:
 2. Disconnect the USB cable.
 3. Re-enable **USB Debugging**.
 4. Reconnect the USB cable.
+
+If the issue persists, try restarting the phone or verifying that USB mode is not set to "Charging only."
 
