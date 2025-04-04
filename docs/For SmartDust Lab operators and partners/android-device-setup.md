@@ -27,14 +27,11 @@ This might differ slightly based on your device, consult online documentation an
 3. Enable **USB Debugging**.
 4. Enable **Disable adb authorization timeout**
 
-### 🔒 Additional Considerations for Some OEMs
-
-Depending on the device manufacturer and system customization layer, additional steps may be required:
+Depending on the device and its OS, additional steps may be required:
 
 - Some systems require enabling **Install via USB** within Developer Options.
 - Ensure the device is in **File Transfer (MTP)** mode rather than "Charging only."
 - In certain environments, additional permissions such as background operation for developer tools or explicit trust confirmation may be necessary.
-- If no prompt for USB debugging appears, make sure the phone is unlocked and the screen is active.
 
 ## Step 4: Connecting the Device
 
@@ -42,6 +39,7 @@ Depending on the device manufacturer and system customization layer, additional 
 2. Connect your device to the server via a USB cable.
 3. Unlock your device.
 4. Accept the prompt asking for permission to allow USB debugging.
+5. If prompted, accept the installation of the SmartDust Lab app.
 
 ## Step 5: Verify Connection
 
@@ -60,4 +58,3 @@ If the USB debugging prompt does not appear:
 4. Reconnect the USB cable.
 
 If the issue persists, try restarting the phone or verifying that USB mode is not set to "Charging only."
-
