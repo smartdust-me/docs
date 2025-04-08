@@ -9,7 +9,7 @@ const config = {
   favicon: 'img/smartdust-logo-2022-margins.png',
 
   url: 'https://smartdust-me.github.io',
-  baseUrl: '/docs/',
+  baseUrl: '/',
 
   organizationName: 'smartdust-me',
   projectName: 'docs',

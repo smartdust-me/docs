@@ -22,6 +22,13 @@ jobs:
 
     - run: npm run build
 
+    - name: Upload to Nexus repository
+      env:
+        AUTH: ${{ secrets.NEXUS_CREDENTIALS }}
+      run: |
+        zip -r smart-docs.zip build
+        curl $AUTH -T smart-docs.zip "https://repository.smartdust.me/repository/smart-docs.zip"
+
     - name: Deploy
       uses: s0/git-publish-subdir-action@develop
       env:
