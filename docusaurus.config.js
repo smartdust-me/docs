@@ -8,8 +8,8 @@ const config = {
   tagline: 'Smartdust is cool',
   favicon: 'img/smartdust-logo-2022-margins.png',
 
-  url: 'https://smartdust-me.github.io',
-  baseUrl: '/docs/',
+  url: 'https://docs.smartdust.me',
+  baseUrl: '/',
 
   organizationName: 'smartdust-me',
   projectName: 'docs',
