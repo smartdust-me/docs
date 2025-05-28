@@ -41,7 +41,9 @@ Many package managers allow for simple installation.
   
 ## Usage
 - Go to an iOS device on your Smartdust Lab instance and click `Enable` on the `Remote Debug` section in the `Dashboard` tab.
-- Copy the displayed command and execute it.
+- A command is displayed for an older tool, [`sd_remoteios`](sd_remoteios.md), which is *not recommended* anymore.
+- Copy only the part that looks like [instance_name].smartdust.me:[port]. (You can also just manually take the port number).
+- In your terminal, run the command `usbfluxctl add [instance_name].smartdust.me:[port]`, for example `usbfluxctl add public.smartdust.me:12345`.
 - You can use `usbfluxctl list` to list the connected devices.
 
 At this point it should be possible to connect to the device using various `usbmuxd` based tools.

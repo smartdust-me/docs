@@ -1,7 +1,7 @@
 # `sd_remoteios` - iOS Remote Connect tool
 
 `sd_remoteios` is a program available for Mac OS and Linux that connects iOS devices from a remote Smartdust Lab so that they're visible on your PC as if they were plugged in via USB.
-In itself, it's not a feature rich tool, so for automation purposes for example, we recommend using the [Smartdust CLI Client](/docs/cli-client) that utilizes `sd_remoteios` under the hood.
+In itself, it's not a feature rich tool, so for automation purposes for example, we recommend using the [Smartdust CLI Client](cli-client.md) that utilizes `sd_remoteios` under the hood.
 
 ## Installation 
 - Grab the appropriate binary for your OS
