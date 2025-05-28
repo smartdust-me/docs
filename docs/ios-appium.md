@@ -19,7 +19,7 @@ All project files are available in a Github [repository](https://github.com/jord
 First, you need to make sure your project in XCode builds and runs on simulators without any issues.
 
 Then, you need to use the `sd_remoteios` tool from Smartdust to connect to iOS devices. 
-Follow the instructions from [its documentation](/docs/sd_remoteios).
+Follow the instructions from [its documentation](sd_remoteios.md).
 
 You should be able to select iOS devices from the Smartdust Lab instance in XCode to run your app on them.
 Check if that works. You need to resolve any code signing issues that may arise. 
@@ -90,10 +90,10 @@ We could set up another Jenkins slave node, but for simplicity I decided to go a
 Jenkins node - the same machine on which the server is running.
 
 ### Libimobiledevice tools
-Install `libimobiledevice` using the [instructions](/docs/libimobiledevice)
+Install `libimobiledevice` using the [instructions](libimobiledevice.md)
 
 ### Smartdust CLI client
-Download, install and test run the Smartdust CLI client according to our [tutorial](/docs/cli-client).
+Download, install and test run the Smartdust CLI client according to our [tutorial](cli-client.md).
 It will enable Jenkins to headlessly connect to test devices.
 
 You should be able to list connected iOS devices by calling `idevice_id -l` (from `libimobiledevice` toolchain).

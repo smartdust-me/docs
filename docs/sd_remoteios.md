@@ -20,7 +20,7 @@ In itself, it's not a feature rich tool, so for automation purposes for example,
     `sudo systemctl start usbmuxd`
     `sudo systemctl status usbmuxd`
 
-We also recommend for all users to install `libimobiledevice` tools for easier debugging. More info [here](/docs/libimobiledevice).
+We also recommend for all users to install `libimobiledevice` tools for easier debugging. More info [here](libimobiledevice.md).
 
 ## Usage
 Go to an iOS device on your Smartdust Lab instance and click `Enable` on the `Remote Debug` section in the `Dashboard` tab.

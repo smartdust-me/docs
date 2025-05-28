@@ -22,8 +22,8 @@ It enables usage of CI/CD tools such as Jenkins.
     - ADB installed and working
 - iOS:
     - [usbmuxd](https://github.com/libimobiledevice/usbmuxd) installed
-    - [sd_remoteios](/docs/sd_remoteios) installed (needs to be in your PATH)
-    - libimobiledevice installed - use the [instructions](/docs/libimobiledevice) (idevice_id program needs to be in your PATH)
+    - [sd_remoteios](sd_remoteios.md) installed (needs to be in your PATH)
+    - libimobiledevice installed - use the [instructions](libimobiledevice.md) (idevice_id program needs to be in your PATH)
 
 :::caution
 A Smartdust account with administrator privileges cannot be used with this tool, it doesn’t work!
@@ -121,7 +121,7 @@ In another terminal window type
     ideviceinfo
 If a bunch of properties are printed on the screen, congratulations! That was the hardest part.
 :::tip
-We advise to read the [`sd_remoteios` documentation](/docs/sd_remoteios) for better understanding.
+We advise to read the [`sd_remoteios` documentation](sd_remoteios.md) for better understanding.
 :::
 To connect to an iOS device in a Smartdust Lab instance, you can copy its serial number and execute the following command:
 
