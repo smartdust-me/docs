@@ -1,4 +1,8 @@
 # iOS CI-CD pipeline with Jenkins and Appium 
+:::caution
+This tutorial uses a deprecated tool [sd_remoteios](sd_remoteios.md) to connect to iOS devices.
+Please refer to the [iOS Remote Debugging documentation](ios-remote-debug.md) for up-to-date information on connecting to iOS devices.
+:::
 Simple example of what's needed to set up and run a CI-CD pipeline of an iOS application with Smartdust Lab. <br/>
 The pipeline involves: 
 - building the app from source,
@@ -19,7 +23,7 @@ All project files are available in a Github [repository](https://github.com/jord
 First, you need to make sure your project in XCode builds and runs on simulators without any issues.
 
 Then, you need to use the `sd_remoteios` tool from Smartdust to connect to iOS devices. 
-Follow the instructions from [its documentation](/docs/docs/sd_remoteios).
+Follow the instructions from [its documentation](sd_remoteios.md).
 
 You should be able to select iOS devices from the Smartdust Lab instance in XCode to run your app on them.
 Check if that works. You need to resolve any code signing issues that may arise. 
@@ -90,10 +94,10 @@ We could set up another Jenkins slave node, but for simplicity I decided to go a
 Jenkins node - the same machine on which the server is running.
 
 ### Libimobiledevice tools
-Install `libimobiledevice` using the [instructions](/docs/docs/libimobiledevice)
+Install `libimobiledevice` using the [instructions](libimobiledevice.md)
 
 ### Smartdust CLI client
-Download, install and test run the Smartdust CLI client according to our [tutorial](/docs/docs/cli-client).
+Download, install and test run the Smartdust CLI client according to our [tutorial](CLI Lab client/cli-client-1-2.md).
 It will enable Jenkins to headlessly connect to test devices.
 
 You should be able to list connected iOS devices by calling `idevice_id -l` (from `libimobiledevice` toolchain).
@@ -179,7 +183,10 @@ This is an example of this file for this project:
 - Note that when I call `smartdust-client`, I use the `--all` flag.  
 The reason is that in my case, all iPhones on my Smartdust Lab instance are connected to the same provider, so this is fine.
 You wouldn't be able to connect to all devices if they were connected via different providers,
-the tool would try for a long time and fail.
+the tool would try for a long time and fail.*
+:::tip
+Having all iOS devices connected to the same provider server is **no longer required** in the current iOS Remote Debugging toolchain, see [iOS Remote Debugging documentation](ios-remote-debug.md).
+:::
 
 # Appium test 
 The last stage of the pipeline above is an Appium test.

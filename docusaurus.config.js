@@ -1,3 +1,4 @@
+require('dotenv/config');
 // @ts-check
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
@@ -9,7 +10,7 @@ const config = {
   favicon: 'img/smartdust-logo-2022-margins.png',
 
   url: 'https://docs.smartdust.me',
-  baseUrl: '/',
+  baseUrl: process.env.BASE_URL || '/',
 
   organizationName: 'smartdust-me',
   projectName: 'docs',

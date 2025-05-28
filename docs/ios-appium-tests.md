@@ -4,7 +4,6 @@ title: iOS Appium tests
 ---
 Components needed:
 
- 
 - WDA running on the tested device (thankfully we already have that in the Lab)
 
 - Port forwarding from the iOS device to the test running client (Linux machine)
