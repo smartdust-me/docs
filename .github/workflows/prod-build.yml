@@ -1,0 +1,32 @@
+name: Build release and upload to Nexus
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Build and upload to Nexus
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+
+      - run: npm i
+        env:
+          CI: true
+          BASE_URL: /
+
+      - run: npm run build
+
+      - name: Upload to Nexus repository
+        env:
+          AUTH: ${{ secrets.NEXUS_CREDENTIALS }}
+        run: |
+          zip -r smart-docs.zip build
+          curl $AUTH -T smart-docs.zip "https://repository.smartdust.me/repository/smart-docs.zip"

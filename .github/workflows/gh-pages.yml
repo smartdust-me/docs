@@ -20,17 +20,11 @@ jobs:
     - run: npm i
       env:
         CI: true
+        BASE_URL: docs/
 
     - run: npm run build
       env:
         BASE_URL: /docs
-
-    - name: Upload to Nexus repository
-      env:
-        AUTH: ${{ secrets.NEXUS_CREDENTIALS }}
-      run: |
-        zip -r smart-docs.zip build
-        curl $AUTH -T smart-docs.zip "https://repository.smartdust.me/repository/smart-docs.zip"
 
     - name: Deploy
       uses: s0/git-publish-subdir-action@develop
