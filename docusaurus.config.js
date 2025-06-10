@@ -28,6 +28,7 @@ const config = {
       'classic',
       {
         docs: {
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/smartdust-me/docs/blob/main/',
         },
@@ -57,13 +58,7 @@ const config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Documentation',
-        },
-
-        {
-          href: 'https://github.com/smartdust-me/docs',
-          label: 'GitHub',
-          position: 'right',
-        },
+        }
       ],
     },
     footer: {
@@ -90,16 +85,7 @@ const config = {
               href: 'https://www.linkedin.com/company/smartdust',
             },
           ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/smartdust-me/docs',
-            },
-          ],
-        },
+        }
       ],
       copyright: `Copyright © ${new Date().getFullYear()} 
       Smartdust, Inc. Built with Docusaurus.`,
