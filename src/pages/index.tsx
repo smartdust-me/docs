@@ -30,7 +30,7 @@ export default function Home(): JSX.Element {
           <p>All you need to know</p>
                     <Link
             className="landing-cta"
-            to={useBaseUrl('/docs/cli-client')}
+            to={useBaseUrl('/docs/android-appium-parallel')}
           >
             Go to Documentation →
           </Link>

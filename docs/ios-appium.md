@@ -97,7 +97,7 @@ Jenkins node - the same machine on which the server is running.
 Install `libimobiledevice` using the [instructions](libimobiledevice.md)
 
 ### Smartdust CLI client
-Download, install and test run the Smartdust CLI client according to our [tutorial](CLI Lab client/cli-client-1-2.md).
+Download, install and test run the Smartdust CLI client according to our [tutorial](CLI%20Lab%20client/cli-client-1-2.md).
 It will enable Jenkins to headlessly connect to test devices.
 
 You should be able to list connected iOS devices by calling `idevice_id -l` (from `libimobiledevice` toolchain).

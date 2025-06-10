@@ -1,5 +1,5 @@
 ---
-id: Configuring and running Appium tests on Android devices in Android Studio
+id: android-studio-appium
 title: Configuring and running Appium tests on Android devices in Android Studio
 ---
 Every developer knows that however daunting it might be, testing is a crucial part of building and deploying software. Mobile apps are not in the very least an exception to this rule due to the immense number of devices and operating systems configurations they have to support. Thankfully, there are many tools facilitating the testing process and one of them, Appium, is the main concern of the article.

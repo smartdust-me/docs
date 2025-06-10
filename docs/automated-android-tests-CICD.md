@@ -15,7 +15,7 @@ More specifically, it works analogously to the “Remote Debug” functionality 
 ![Remote Debug screenshot](/automated-android-tests-CICD/remote_debug.png)
 
 That means, it can be easily used for connecting to devices automatically in scripts and, for example, automatic testing pipelines can be created.
-To familiarize yourself with the tool, please refer to [its documentation](./cli-client.md). 
+To familiarize yourself with the tool, please refer to [its documentation](./CLI%20Lab%20client/cli-client-1-3.md). 
 
 ## What we’re going to do
 
@@ -63,7 +63,7 @@ However, we do need to modify it to include the Smartdust CLI client and its con
 - Enter the container's terminal:     
     `docker run --user root -it mingc/android-build-box bash -l`
 
-Now, <u>staying in the virtual machine's terminal</u>, follow the instructions of installing and using the Smartdust CLI client from [its documentation](./cli-client.md). 
+Now, <u>staying in the virtual machine's terminal</u>, follow the instructions of installing and using the Smartdust CLI client from [its documentation](./CLI%20Lab%20client/cli-client-1-3.md). 
 Create your access token in your Smartdust Lab and make a test connection via the tool as described in the tutorial. 
 Add the ADB key when prompted in the Smartdust Lab web interface during making the first connection. 
 That will be your docker container’s ADB key.

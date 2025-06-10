@@ -1,5 +1,5 @@
 ---
-id: Parallel testing Android apps using a remote testing platform and Appium
+id: android-appium-parallel
 title: Parallel testing Android apps using a remote testing platform and Appium
 ---
 
