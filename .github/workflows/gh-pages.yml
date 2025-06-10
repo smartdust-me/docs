@@ -22,6 +22,8 @@ jobs:
         CI: true
 
     - run: npm run build
+      env:
+        BASE_URL: /docs
 
     - name: Deploy
       uses: s0/git-publish-subdir-action@develop

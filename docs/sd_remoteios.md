@@ -1,7 +1,11 @@
-# `sd_remoteios` - iOS Remote Connect tool
+# `sd_remoteios` - iOS Remote Connect tool (deprecated)
 
+:::caution
+`sd_remoteios` became deprecated in June 2025 and is no longer recommended for use.
+Read the [iOS Remote Debugging documentation](ios-remote-debug.md) to learn about the recommended tools to connect to iOS devices.
+:::
 `sd_remoteios` is a program available for Mac OS and Linux that connects iOS devices from a remote Smartdust Lab so that they're visible on your PC as if they were plugged in via USB.
-In itself, it's not a feature rich tool, so for automation purposes for example, we recommend using the [Smartdust CLI Client](/docs/docs/cli-client) that utilizes `sd_remoteios` under the hood.
+In itself, it's not a feature rich tool, so for automation purposes for example, we recommend using the [Smartdust CLI Client](CLI Lab client/cli-client-1-2.md) that utilizes `sd_remoteios` under the hood.
 
 ## Installation 
 - Grab the appropriate binary for your OS
@@ -20,7 +24,7 @@ In itself, it's not a feature rich tool, so for automation purposes for example,
     `sudo systemctl start usbmuxd`
     `sudo systemctl status usbmuxd`
 
-We also recommend for all users to install `libimobiledevice` tools for easier debugging. More info [here](/docs/docs/libimobiledevice).
+We also recommend for all users to install `libimobiledevice` tools for easier debugging. More info [here](libimobiledevice.md).
 
 ## Usage
 Go to an iOS device on your Smartdust Lab instance and click `Enable` on the `Remote Debug` section in the `Dashboard` tab.

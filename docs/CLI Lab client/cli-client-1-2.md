@@ -1,35 +1,35 @@
-# Smartdust CLI Client
+# SmartDust CLI Client version 1.2.x
 
 ### Description
 
-Smartdust CLI client is a tool that enables connecting to devices present in Smartdust Lab instances via ADB (Android) and usbfluxd (iOS) through the command line. 
-This in turn allows for automation of development/testing/etc. processes as connecting to devices can be done entirely in terminal script environments without touching the web UI interface. 
+SmartDust CLI client is a tool that enables connecting to devices present in Smartdust Lab instances via Android Debug Bridge (Android) and `usbmuxd` (iOS) through the command line.
+This in turn allows for automation of development/testing/etc. processes as connecting to devices can be done entirely in terminal script environments without touching the web UI interface.
 It enables usage of CI/CD tools such as Jenkins.
 
 ## Installation
-- Install [Ruby](https://www.ruby-lang.org/en/downloads/)
+- Install [Ruby](https://www.ruby-lang.org/en/downloads/). For best compatibility, use Ruby 3.0 or later.
 - Then you can install Smartdust CLI client as a Ruby gem:
- 
-        sudo gem install smartdust-client
- 
-## Quick device connecting tutorial
+
+        sudo gem install smartdust-client -v 1.2.0
+
+## Device connecting tutorial
 
 ### Prerequisites
 
-- An account that you can log in to a Smartdust Lab with - you can make one by visiting [public.smartdust.me](public.smartdust.me)
+- An account that you can log in to a Smartdust Lab with - you can make one by visiting [public.smartdust.me](https://public.smartdust.me)
 - Using a Linux OS and having basic knowledge regarding using the terminal - using Bash or zsh is recommended
 - Android:
-    - ADB installed and working
+  - ADB installed and working
 - iOS:
-    - [usbmuxd](https://github.com/libimobiledevice/usbmuxd) installed
-    - [sd_remoteios](/docs/docs/sd_remoteios) installed (needs to be in your PATH)
-    - libimobiledevice installed - use the [instructions](/docs/docs/libimobiledevice) (idevice_id program needs to be in your PATH)
+  - [usbmuxd](https://github.com/libimobiledevice/usbmuxd) installed
+  - [sd_remoteios](sd_remoteios.md) installed (needs to be in your PATH)
+  - libimobiledevice installed - use the [instructions](libimobiledevice.md) (idevice_id program needs to be in your PATH)
 
 :::caution
 A Smartdust account with administrator privileges cannot be used with this tool, it doesn’t work!
 :::
 :::caution
-You cannot reuse the same ADB key in another Smartdust account. 
+You cannot reuse the same ADB key in another Smartdust account.
 :::
 
 Steps:
@@ -40,19 +40,19 @@ Follow the installation instructions from above and make sure that the client is
 in your terminal window. You should see a description of the tool’s options.
 
 ### Getting a Lab connection token
-Obtain a Smartdust Lab connection token from a Smartdust Lab instance - for example at public.smartdust.me. 
+Obtain a Smartdust Lab connection token from a Smartdust Lab instance - for example at public.smartdust.me.
 After logging in, click “Settings” on the upper menu bar:
 ![](/cli-client/upper-menu-settings.png)
 
 Then go to the “Keys” tab and in the “Access Tokens” pane click on the “+” icon on the right.
 ![](/cli-client/access-token-settings.png)
-Name your token however you like and after clicking “Generate New Token” your token will be displayed as a string of characters. 
+Name your token however you like and after clicking “Generate New Token” your token will be displayed as a string of characters.
 Copy it and keep it somewhere you’ll have access to.
 
 Go back to the main view of the Lab, for example by clicking on the Smartdust logo in the upper left corner.
 
 ### Setting your Lab token and URL as environmental variables
-Let’s bring the terminal back to view again. We’ll need to set some environmental variables - the token you just copied and the URL of the Smartdust Lab. 
+Let’s bring the terminal back to view again. We’ll need to set some environmental variables - the token you just copied and the URL of the Smartdust Lab.
 This is roughly described by the tool itself when you type
 
     smartdust-client -h
@@ -66,7 +66,7 @@ Setting the variables we need in a Bash or zsh shell goes as follows:
 
 It might differ if you’re using a different shell, check for suitable instructions online.
 
-As you can see, the Smartdust Lab URL must be passed in the full, including the `https://` protocol signifier. 
+As you can see, the Smartdust Lab URL must be passed in the full, including the `https://` protocol signifier.
 However, don’t add any trailing characters after the domain name of the Lab which might be displayed in your browser.
 
 ## Connecting to Android devices
@@ -97,14 +97,14 @@ If you want to connect to more devices and/or use particular types of devices, u
 
 ## Connecting to iOS devices
 
-When connecting to iOS devices, Smartdust CLI heavily depends on a couple of external dependencies. 
+When connecting to iOS devices, Smartdust CLI heavily depends on a couple of external dependencies.
 You need to make sure that `usbmuxd` service works by typing:
 
     sudo systemctl start usbmuxd
 and check if it’s running:
 
     sudo systemctl status usbmuxd
-You also need to install [`sd_remoteios`] for your OS. 
+You also need to install [`sd_remoteios`] for your OS.
 Put it in your PATH so that you can call it just like this:
 
     sd_remoteios
@@ -121,7 +121,7 @@ In another terminal window type
     ideviceinfo
 If a bunch of properties are printed on the screen, congratulations! That was the hardest part.
 :::tip
-We advise to read the [`sd_remoteios` documentation](/docs/docs/sd_remoteios) for better understanding.
+We advise to read the [`sd_remoteios` documentation](sd_remoteios.md) for better understanding.
 :::
 To connect to an iOS device in a Smartdust Lab instance, you can copy its serial number and execute the following command:
 
