@@ -37,7 +37,7 @@ Many package managers allow for simple installation.
 `usbfluxctl`:
 - [Mac OS x64 binary](/usbfluxd-builds/usbfluxctl_macos_x64.zip)
 - [Mac OS ARM binary](/usbfluxd-builds/usbfluxctl_macos_arm.zip)
-- [Linux x64 binary](/usbfluxd-builds/usbfluxd_linux_x64.zip)
+- [Linux x64 binary](/usbfluxd-builds/usbfluxctl_linux_x64.zip)
   
 ## Usage
 - Go to an iOS device on your Smartdust Lab instance and click `Enable` on the `Remote Debug` section in the `Dashboard` tab.
