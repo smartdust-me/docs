@@ -10,7 +10,7 @@ It enables usage of CI/CD tools such as Jenkins.
 - Install [Ruby](https://www.ruby-lang.org/en/downloads/). For best compatibility, use Ruby 3.0 or later.
 - Then you can install Smartdust CLI client as a Ruby gem:
 
-        sudo gem install smartdust-client -v 1.3.3
+        sudo gem install smartdust-client
 
 ## Updating
 If you already have the Smartdust CLI Client installed, you can update it by running:
