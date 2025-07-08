@@ -4,6 +4,10 @@ title: Appium service (limited availability)
 ---
 This article describes an Appium service that exposes an Appium server hosted on a SmartDust Lab instance.
 This allows for running Appium test on remote SmartDust devices with minimal setup and configuration.
+You don't need to install or maintain your own Appium server.
+Therefore you also don't need to establish remote connections to the devices (no need for `ADB` or `usbfluxctl`).
+You just need to apply a certain configuration in your test code and you're ready to go.
+
 :::info
 For now, this feature is only available on chosen Smartdust Lab private instances.
 If you'd like to use it, please contact us for the details.
@@ -21,6 +25,8 @@ The default prepended path needs to be set, as well as authorization headers.
 Contact Smartdust support to obtain the connection details for your instance.
 
 ```javascript
+const wdio = require("webdriverio");
+
 const options = {
   path: '/appium',
   hostname: '[yourinstance].smartdust.me',
@@ -30,6 +36,9 @@ const options = {
     Authorization: `Basic ${Buffer.from('appiumuser:password').toString('base64')}`
   }
 };
+
+capabilities = {} // define your Appium capabilities here (see below)
+options.capabilities = capabilities;
 const client = await remote(options);
 ```
 
@@ -85,11 +94,16 @@ const capabilities = {
   //'browserName': "Safari", // enable this to run web browser (Safari) tests
 }
 ```
+
 As per the comment, you can enable the `browserName` capability to run web browser tests on iOS devices.
 
+You may run into issues if you enter the tested iOS device's page in SmartDust Lab while the test is running.
+If you want to monitor the test, please open the device page before starting the test and do not interact with the device until the test has finished.
+
 ## Tips
-- The Appium service is currently in a limited availability state, so please contact Smartdust support to get access.
-- In case of persisting issues, please contact Smartdust support for assistance.
+
 - The Appium tests startup time varies wildly depending on the device used.
+- To speed up test startup on Android devices, try setting the `appium:skipDeviceInitialization` capability to `true`.
+- In case of persisting issues, please contact Smartdust support for assistance.
 
 
