@@ -6,15 +6,19 @@ title: Maestro
 ## Maestro Quickstart
 Maestro is a modern mobile UI testing framework that allows you to write lightweight, readable YAML-based flows for testing native apps on Android and iOS devices. It is designed for fast iteration, ease of debugging, and seamless integration with both real devices and CI environments.
 
-## Prerequisities
+Maestro Documentation:
+`https://docs.maestro.dev/api-reference/commands`
+
+## ✅ Prerequisites
 Before you begin, ensure you have the following installed:
 - A Smartdust account
 - Your smartdust device remote debug key. 
 - Maestro cli
 - Android sdk
 
+---
+
 ## Step 1: Connect to device.
-Firstly you have to connect to device, then:
 - Navigate to Dashboard
 - Find Remote debug (probably on the upper left of the dashboard settings) and click Enable
 
@@ -24,24 +28,35 @@ Firstly you have to connect to device, then:
 - Paste the code to the terminal/Powershell/cmd
 - On website accept to add adb key to Smart Dust Lab, if you don't have any popup try disabling and enabling Remote debug.
 
-Now u should be connected to the device via adb. You can check connection using `adb devices`, it should be something like this:
-`list of devices attached
-...smartdust.me:..   device`
+Now you should be connected to the device via ADB.  
+Check the connection with:
+
+```bash
+adb devices
+```
+Expected output:
+```bash
+List of devices attached
+123.45.67.89.smartdust.me:5555   device
+```
+
 if instead of `device` there is displayed `offline`, you should try to connect again.
+
+---
 
 ## Step 2: Upload your app to the device.
 We will upload based on the Dust app: `https://github.com/damiant/dust`.
-So firstly, build the app i will do it using `bunx ng build` and then deploy app using `npx cap run android`. 
+So firstly, build the app for example, using `bunx ng build` and then deploy app using `npx cap run android`. 
 You should see the app on your device. 
 
 ![Smart Dust lab apk upload](/img/apk_upload.png)
 
-If not check you terminal for potential issues.
+If not, check your terminal output for possible errors.
+
+---
 
 ## Step 3: Run the Tests
-Maestro Documentation:
-`https://docs.maestro.dev/api-reference/commands`
-You can now simply run the maestro tests on your device using:
+Now simply run the maestro tests on your device using:
 `maestro test NAME_OF_THE_TEST.yaml`
 
 ![Smart Dust lab dust app test](/img/dust_test.png)
