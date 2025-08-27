@@ -17,6 +17,7 @@ This step is not necessary for devices that have already been connected to the L
 
 - (Optional) If the device is intended to be used by different users, you might want to first reset it to factory settings to avoid leaking personal data and providing a cleaner experience. 
 - **Remove any lockscreen security (passcode, biometric).**
+> If you keep a passcode/biometrics, be aware that you will need to enter the passcode as described below to allow the connection.
 
 ## Step 3: Connecting the Device
 
@@ -25,6 +26,13 @@ This step is not necessary for devices that have already been connected to the L
 3. Unlock the iPhone.
 4. Tap **Trust** when prompted by your iPhone.
    - For devices running iOS 17 and above, you will be prompted to trust the computer twice. Ensure to accept the prompt each time it appears.
+
+:::caution Passcode required when connecting/restarting
+If a passcode/Face ID/Touch ID is enabled:
+- You must **enter the passcode after every iPhone restart** and when **connecting to the server** to allow data access/pairing.
+- iOS may **periodically require the passcode again** (e.g., due to security policies). If you see prompts like “Unlock iPhone to use accessories” or are asked to trust the computer again, **unlock and enter the passcode** to continue.
+:::
+
 
 ## Step 4: Verify Connection
 
@@ -37,3 +45,5 @@ If the "Trust this computer" prompt does not appear:
 1. Disconnect the USB cable from your device.
 2. Restart your iPhone.
 3. Reconnect the USB cable.
+
+If the device is not recognized or disconnects unexpectedly: **unlock the iPhone** and **enter the passcode** (especially after a restart or after a period of inactivity), then reconnect the USB cable if necessary.
