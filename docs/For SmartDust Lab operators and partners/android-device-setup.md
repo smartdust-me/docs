@@ -41,6 +41,13 @@ Depending on the device and its OS, additional steps may be required:
 4. Accept the prompt asking for permission to allow USB debugging.
 5. If prompted, accept the installation of the SmartDust Lab app.
 
+:::caution Device must be unlocked
+The phone must be **unlocked** whenever you connect it to the server and **after every reboot**.  
+If the device is locked at boot or relocks while connected, ADB may show it as *offline/unauthorized* and the device will not appear in the Lab.  
+Unlock the device and confirm the USB debugging prompt again if needed.
+:::
+
+
 ## Step 5: Verify Connection
 
 - Navigate to the **SmartDust Lab page** to confirm the device connection status.
@@ -58,3 +65,5 @@ If the USB debugging prompt does not appear:
 4. Reconnect the USB cable.
 
 If the issue persists, try restarting the phone or verifying that USB mode is not set to "Charging only."
+
+If `adb devices` shows **unauthorized** or the device disappears after a reboot: **unlock the phone**, reconnect the USB cable, and confirm the USB debugging prompt again.
