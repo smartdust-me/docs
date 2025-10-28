@@ -38,46 +38,41 @@ Include the chosen device's serial identifier in the request body:
 
 3. Start a Remote Debug session.
 
-Send a POST request to the `/api/v1/user/devices/{serial}/remoteConnect` endpoint.
+Send a POST request to the `/api/v1/user/devices/{serial}/remoteConnectTunnel` endpoint.
 Replace `{serial}` with the serial number of the device you want to connect to.
-The response object will contain a `remoteDebugUrl` field, from which you should export the port number by splitting the URL string by `:`.
 
-4. Find out the device's provider information.
+4. Connect to the device via ADB (Android) or `usbfluxctl` (iOS).
 
-Use the `GET /api/v1/user/devices/{serial}` endpoint to retrieve a specific device's information.
-Extract the `ip` field from the `provider` object in the response JSON.
+**Android:**
 
-5. Open a tunnel to the device's provider server.
-
-Call the `POST api/v1/tunnel` endpoint to open a tunnel to the device's provider server.
-Put the variables saved in previous steps in request body:
-```json
-{
-    "ip": "provider_ip",
-    "port": "remote_debug_port"
-}
+Use Android Debug Bridge which comes with the Android SDK.
+Run the following command to connect to the device:
+```bash
+adb connect [remoteConnectUrl]
 ```
-The response will contain a `port` field, which should be saved.
-
-6. Connect to the device via ADB (Android) or `sd_remoteios` (iOS).
-
-The Remote Debug address for the device is `[your_instance_name].smartdust.me:[port]`, where `[port]` is the port number you received in the previous step.
+where `[remoteConnectUrl]` is the value returned in the API response from the previous step.
 
 If it's the first time your machine is connecting to an Android device, you have open the SmartDust Lab web interface first and accept the key fingerprint when connecting.
 
+**iOS:**
+
+Only Linux and MacOS are supported for iOS Remote Debugging for the time being.
+Follow the instructions in the [iOS Remote Debugging documentation](ios-remote-debug.md) to install `usbfluxd` and `usbfluxctl`.
+Run the following command to connect to the device:
+```bash
+sudo usbfluxd -n && usbfluxctl add [remoteConnectUrl]
+```
+where `[remoteConnectUrl]` is the value returned in the API response from the previous step.
+
 ## Steps to disconnect
-1. Close the tunnel to the device's provider.
 
-Call the `DELETE /api/v1/tunnel` endpoint to close the tunnel to the device's provider server.
-Provide the same information in the body as when creating the tunnel.
+1. Close the connection to the device.
 
-2. Stop the Remote Debug session.
+Call the `DELETE /api/v1/user/devices/{serial}/remoteConnectTunnel` endpoint.
 
-Use the `DELETE /api/v1/user/devices/{serial}/remoteConnect` endpoint to stop the Remote Debug session.
+2. Release the device.
 
-3. Release the device.
-
-Call the `DELETE /api/v1/user/devices/{serial}` endpoint to release the device from control.
+Call the `DELETE /api/v1/user/devices/{serial}` endpoint to release the device from your control.
 
 ## Tips
 Refer to the Swagger documentation for the API for more information, which is available at `https://[your-instance-name].smartdust.me/api/v1/swagger.json`.

@@ -55,3 +55,5 @@ At this point it should be possible to connect to the device using various `usbm
 
 ## Troubleshooting
 - In case of connection issues, try disabling and enabling the Remote Debug feature in the Smartdust Lab device page.
+- If get an error like `command not found`, then most likely you have a problem with your $PATH environment variable or the file permissions.
+Make sure to add run permissions to the executables. If you still have issues, try running the commands using the full path to the executables, e.g. `/usr/local/bin/usbfluxd`.
