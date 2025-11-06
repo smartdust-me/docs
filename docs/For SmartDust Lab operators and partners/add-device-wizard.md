@@ -59,7 +59,7 @@ sidebar_position: 1
 
 ---
 
-## 05 · Zerotier app should open by itself (don't touch screen at this point)
+## 05 · Zerotier app should open by itself (let our service do the work, keep the screen unlocked and unthouched)
 
 ![Step 5](/add-device-wizard/zerotier.jpg)
 
@@ -73,8 +73,8 @@ sidebar_position: 1
 ## 06 · Finalize Connection
 
 ![Step 6](/add-device-wizard/switch_copy.png)
-![Step 6](/add-device-wizard/allow_usb_debug1.jpg)
 ![Step 6](/add-device-wizard/paste_connect.png)
+![Step 6](/add-device-wizard/allow_usb_debug1.jpg)
 ![Step 6](/add-device-wizard/use_device.png)
 
 <details>
