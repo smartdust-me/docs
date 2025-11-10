@@ -1,0 +1,132 @@
+---
+id: add-device-wizard
+title: Add-device android wizard
+sidebar_position: 1
+---
+
+import WizardCarousel from '@site/src/components/WizardCarousel';
+
+# 🔗 SmartDust Device Onboarding
+
+> Visual-first wizard. Follow the screens in order. Text is optional.
+
+---
+
+## 01 · Enable Developer Mode
+
+<WizardCarousel
+  slides={[
+    {
+      src: '/add-device-wizard/settings1.jpg',
+      label: 'Open **About phone**.',
+    },
+    {
+      src: '/add-device-wizard/about_phone.jpg',
+      label: 'Go to **Software information**.',
+    },
+    {
+      src: '/add-device-wizard/soft_info.jpg',
+      label: 'Tap **Build number** 7×.',    },
+    {
+      src: '/add-device-wizard/settings2.jpg',
+      label: 'Go to **Developer options**.',
+    },
+    {
+      src: '/add-device-wizard/dev_options.jpg',
+      label: 'Enable **USB debugging and disable adb authorization timeout.',
+    },
+  ]}
+/>
+
+> Hint: Keep Developer options enabled for lab devices.
+
+---
+
+## 02 · Connect to SmartDust Setup
+
+<WizardCarousel
+  slides={[
+    {
+      src: '/add-device-wizard/connect_phone_to_computer.jpg',
+      label: 'Connect the phone to the host via USB.',
+    },
+    {
+      src: '/add-device-wizard/instructions1.png',
+      label: 'Open the SmartDust setup page on the host.',
+    },
+  ]}
+/>
+
+> Hint: Use a stable data cable. If the device is not visible, try another port/cable.
+
+---
+
+## 03 · Approve USB Debugging
+
+<WizardCarousel
+  slides={[
+    {
+      src: '/add-device-wizard/allow_usb_debug.jpg',
+      label: 'On the device: **Always allow from this computer** → **Allow**.',
+    },
+  ]}
+/>
+
+> Hint: If no prompt appears, replug USB or check **USB debugging** in Developer options.
+
+---
+
+## 04 · Install Secure VPN Client
+
+<WizardCarousel
+  slides={[
+    {
+      src: '/add-device-wizard/install_vpn_app.png',
+      label: 'Click **Install VPN app** on the setup page and wait.',
+    },
+  ]}
+/>
+
+> Hint: Keep the device unlocked until install completes.
+
+---
+
+## 05 · Let Zerotier Configure
+
+<WizardCarousel
+  slides={[
+    {
+      src: '/add-device-wizard/zerotier.jpg',
+      label: 'Zerotier opens automatically. Let it finish. Don’t touch.',
+    },
+  ]}
+/>
+
+> Hint: Just keep the screen awake; SmartDust handles this step.
+
+---
+
+## 06 · Finalize Connection
+
+<WizardCarousel
+  slides={[
+    {
+      src: '/add-device-wizard/switch_copy.png',
+      label: 'Wait for the private IP to appear.',
+    },
+    {
+      src: '/add-device-wizard/paste_connect.png',
+      label: 'Switch to TCP, paste IP, click **Connect**.',
+    },
+    {
+      src: '/add-device-wizard/allow_usb_debug1.jpg',
+      label: 'Approve any final USB debugging prompt if shown.',
+    },
+    {
+      src: '/add-device-wizard/use_device.png',
+      label: 'Confirm the device is online & usable in SmartDust.',
+    },
+  ]}
+/>
+
+> ✅ Keep the device unlocked, connected, and online during the whole flow.
