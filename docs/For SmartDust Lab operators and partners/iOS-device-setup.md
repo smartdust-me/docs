@@ -31,6 +31,7 @@ This step is not necessary for devices that have already been connected to the L
 If a passcode/Face ID/Touch ID is enabled:
 - You must **enter the passcode after every iPhone restart** and when **connecting to the server** to allow data access/pairing.
 - iOS may **periodically require the passcode again** (e.g., due to security policies). If you see prompts like “Unlock iPhone to use accessories” or are asked to trust the computer again, **unlock and enter the passcode** to continue.
+- For best stability, we recommend disabling the security screen lock entirely as long as the device is connected to the SmartDust Lab.
 :::
 
 
