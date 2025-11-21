@@ -1,0 +1,220 @@
+/* Clean, product-grade carousel for wizard screenshots. */
+
+.carousel {
+    margin: 1.5rem auto 2rem;
+    max-width: 960px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+.header {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #e5e7eb;
+    margin-bottom: 0.4rem;
+}
+
+/* viewport with arrows */
+
+.viewport {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.track {
+    flex: 1;
+    display: flex;
+    gap: 0.6rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.2rem 0;
+}
+
+/* hide scrollbar but keep scrollable */
+.track::-webkit-scrollbar {
+    display: none;
+}
+.track {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    transition: transform 0.2s ease;
+}
+
+.slideActive {
+    transform: translateY(-1px);
+}
+
+/* FRAME: utrzymuje proporcje, maskuje różne rozdzielczości */
+
+.frame {
+    width: min(720px, 100%);
+    aspect-ratio: 9 / 16; /* pionowy telefon; zmień jeśli większość jest inna */
+    border-radius: 18px;
+    background-color: #020817;
+    border: 1px solid rgba(148, 163, 253, 0.35);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.frame img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* nic nie przycina, ale wygląda równo */
+    display: block;
+}
+
+/* Caption */
+
+.caption {
+    font-size: 0.78rem;
+    color: #9ca3af;
+}
+
+/* Arrows */
+
+.arrow {
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    border: 1px solid #4b5563;
+    background-color: #020817;
+    color: #e5e7eb;
+    font-size: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+            background-color 0.15s ease,
+            color 0.15s ease,
+            border-color 0.15s ease,
+            transform 0.15s ease,
+            box-shadow 0.15s ease;
+    flex-shrink: 0;
+}
+
+
+
+.arrow:hover:not(:disabled) {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.45);
+    transform: translateY(-1px);
+}
+
+.arrow:disabled {
+    opacity: 0.24;
+    cursor: default;
+}
+
+.arrowLeft {
+    order: 0;
+}
+
+.arrowRight {
+    order: 2;
+}
+
+/* Footer: dots + hint */
+
+.footer {
+    margin-top: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+}
+
+.dots {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    border: none;
+    background-color: #4b5563;
+    opacity: 0.4;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    padding: 0;
+}
+
+.dotActive {
+    width: 10px;
+    opacity: 1;
+    background-color: #2563eb;
+}
+
+.hint {
+    font-size: 0.72rem;
+    color: #9ca3af;
+}
+
+.hint::before {
+    content: "◀▶ ";
+    font-weight: 600;
+    color: #2563eb;
+}
+
+
+/* Light theme */
+
+:root[data-theme='light'] .header {
+    color: #111827;
+}
+
+:root[data-theme='light'] .frame {
+    background-color: #020817;
+}
+
+:root[data-theme='light'] .arrow {
+    background-color: #ffffff;
+    border-color: #d1d5db;
+    color: #4b5563;
+}
+
+
+
+:root[data-theme='light'] .arrow:hover:not(:disabled) {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .viewport {
+        gap: 0.2rem;
+    }
+
+    .frame {
+        width: 100%;
+        aspect-ratio: 9 / 18;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
