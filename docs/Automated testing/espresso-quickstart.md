@@ -14,74 +14,20 @@ Espresso documentation:
 
 Before you begin, ensure you have the following installed:
 
-- A **SmartDust** account
-- Your **SmartDust device remote debug key**
 - Installed **Android SDK + ADB**
 - Installed **Java JDK 21**
 - An Android project with Espresso configured
-- Optional: your `.apk` or app build process ready
 
 ---
 
-## 🔌 Step 1: Connect to Device
+## Setup
 
-1. Navigate to Dashboard
-2. Click **Remote debug** in the device card (top-left corner or settings)
-3. Enable remote ADB access
+Before continuing, complete the [Android Test Setup](./android-test-setup.md).
 
-![Smart Dust lab remote debug](/img/remote_debug.png)
-
-4. Copy the generated ADB command, e.g.:
-
-```bash
-adb connect 123.45.67.89.smartdust.me:5555
-```
-
-5. Paste into your terminal and run it
-6. Back in the dashboard, accept the ADB key request (if no popup, toggle remote debug off/on)
-
-Verify your device is connected:
-
-```bash
-adb devices
-```
-
-Expected output:
-
-```text
-List of devices attached
-123.45.67.89.smartdust.me:5555   device
-```
-
-If it says `offline`, retry the connection.
+It covers connecting a SmartDust Android device through Remote Debug and deploying the Dust application used in this example.
 
 ---
-
-## Step 2: Upload your app to the device.
-
-We will upload based on the Dust app: `https://github.com/damiant/dust`.
-
-So, firstly build the app, for example, using:
-
-```bash
-bunx ng build
-```
-
-Then deploy the app using:
-
-```bash
-npx cap run android
-```
-
-You should see the app on your device.
-
-![Smart Dust lab apk upload](/img/apk_upload.png)
-
-If not, check your terminal for potential issues.
-
----
-
-## Step 3: Prepare Espresso
+## Step 1: Prepare Espresso
 
 Dust already contains Android instrumentation test support.
 
@@ -111,7 +57,7 @@ nexus.concepts.dust.MainActivity
 
 ---
 
-## Step 4: Write Your Test
+## Step 2: Write Your Test
 
 Create the test directory:
 
@@ -178,7 +124,7 @@ find app/src/androidTest -type f -name 'ExampleInstrumentedTest.java' -delete
 
 ---
 
-## ▶️ Step 5: Run Your Tests
+## ▶️ Step 3: Run Your Tests
 
 Make sure the SmartDust device is still connected:
 
