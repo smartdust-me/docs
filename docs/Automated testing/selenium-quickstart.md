@@ -17,8 +17,6 @@ Selenium documentation:
 
 Before you begin, ensure you have the following installed:
 
-- A **SmartDust** account
-- Your **SmartDust device remote debug key**
 - Installed **Android SDK + ADB**
 - Installed **Node.js + npm**
 - Google Chrome installed on the SmartDust Android device
@@ -26,63 +24,12 @@ Before you begin, ensure you have the following installed:
 
 ---
 
-## 🔌 Step 1: Connect to Device
+## SmartDust Device Setup
 
-1. Navigate to Dashboard
-2. Click **Remote debug** in the device card (top-left corner or settings)
-3. Enable remote ADB access
+Connect the Android device through SmartDust Remote Debug as described in
+[Android Test Setup](./android-test-setup.md#step-1-connect-to-device).
 
-![Smart Dust lab remote debug](/img/remote_debug.png)
-
-4. Copy the generated ADB command, e.g.:
-
-```bash
-adb connect 123.45.67.89.smartdust.me:5555
-```
-
-5. Paste into your terminal and run it
-6. Back in the dashboard, accept the ADB key request (if no popup, toggle remote debug off/on)
-
-Verify your device is connected:
-
-```bash
-adb devices
-```
-
-Expected output:
-
-```text
-List of devices attached
-123.45.67.89.smartdust.me:5555   device
-```
-
-If it says `offline` or authentication fails, reconnect Remote Debug and accept the new ADB key request.
-
----
-
-## Step 2: Upload your app to the device.
-
-We will upload based on the Dust app: `https://github.com/damiant/dust`.
-
-So, firstly build the app, for example, using:
-
-```bash
-bunx ng build
-```
-
-Then deploy the app using:
-
-```bash
-npx cap run android
-```
-
-You should see the app on your device.
-
-![Smart Dust lab apk upload](/img/apk_upload.png)
-
-If not, check your terminal for potential issues.
-
-> The Selenium example below runs against Chrome on the same SmartDust device, not directly against the native Dust UI.
+This Selenium example automates Chrome running on the SmartDust Android device. It does not automate the native Dust application.
 
 ---
 
@@ -109,7 +56,7 @@ npm install selenium-webdriver
 
 ---
 
-## Step 4: Check Chrome Version
+## Step 1: Check Chrome Version
 
 Verify Chrome is installed on the SmartDust device:
 
@@ -139,7 +86,7 @@ ChromeDriver must match the Chrome version installed on the Android device.
 
 ---
 
-## Step 5: Install Matching ChromeDriver
+## Step 2: Install Matching ChromeDriver
 
 Create a directory for ChromeDriver:
 
@@ -181,7 +128,7 @@ ChromeDriver 153.0.8010.52
 
 ---
 
-## Step 6: Write Selenium Test
+## Step 3: Write Selenium Test
 
 Create:
 
@@ -238,7 +185,7 @@ try {
 
 ---
 
-## ▶️ Step 7: Run Selenium Test
+## ▶️ Step 4: Run Selenium Test
 
 Make sure the SmartDust device is still connected:
 
