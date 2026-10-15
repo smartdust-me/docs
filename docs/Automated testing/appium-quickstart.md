@@ -14,76 +14,21 @@ Appium documentation:
 
 Before you begin, ensure you have the following installed:
 
-- A **SmartDust** account
-- Your **SmartDust device remote debug key**
 - **Node.js v20.19+**
 - **npm v10+**
 - Installed **Android SDK + ADB**
 - Installed **Java JDK**
-- Optional: your `.apk` or app build process ready
 
 ---
 
-## 🔌 Step 1: Connect to Device
+## Setup
 
-1. Navigate to Dashboard
-2. Click **Remote debug** in the device card (top-left corner or settings)
-3. Enable remote ADB access
+Before continuing, complete the [Android Test Setup](./android-test-setup.md).
 
-![Smart Dust lab remote debug](/img/remote_debug.png)
-
-4. Copy the generated ADB command, e.g.:
-
-```bash
-adb connect 123.45.67.89.smartdust.me:5555
-```
-
-5. Paste it into your terminal and run it
-6. Back in the dashboard, accept the ADB key request. If no popup appears, disable and enable **Remote debug** again.
-
-Verify that your device is connected:
-
-```bash
-adb devices
-```
-
-Expected output:
-
-```text
-List of devices attached
-123.45.67.89.smartdust.me:5555   device
-```
-
-If `offline` is displayed instead of `device`, retry the connection.
+It covers connecting a SmartDust Android device through Remote Debug and deploying the Dust application used in this example.
 
 ---
-
-## Step 2: Upload your app to the device.
-
-We will use the Dust app:  
-`https://github.com/damiant/dust`
-
-First, build the app, for example using:
-
-```bash
-bunx ng build
-```
-
-Then deploy it to the connected Android device using:
-
-```bash
-npx cap run android
-```
-
-You should see the app on your device.
-
-![Smart Dust lab apk upload](/img/apk_upload.png)
-
-If not, check your terminal output for possible errors.
-
----
-
-## Step 3: Install Appium
+## Step 1: Install Appium
 
 Create a new directory for the Appium test:
 
@@ -121,7 +66,7 @@ Optional warnings such as missing `ffmpeg` or `bundletool.jar` do not prevent th
 
 ---
 
-## Step 4: Start Appium Server
+## Step 2: Start Appium Server
 
 Start the Appium server:
 
@@ -139,7 +84,7 @@ Keep this terminal running while executing the test.
 
 ---
 
-## Step 5: Write Your Test
+## Step 3: Write Your Test
 
 Create a file named:
 
@@ -206,7 +151,7 @@ The longer timeout values are useful when testing through SmartDust remote ADB, 
 
 ---
 
-## ▶️ Step 6: Run Your Tests
+## ▶️ Step 4: Run Your Tests
 
 Make sure the SmartDust device is still connected:
 
