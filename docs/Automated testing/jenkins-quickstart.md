@@ -14,74 +14,22 @@ Jenkins documentation:
 
 Before you begin, ensure you have the following installed:
 
-- A **SmartDust** account
-- Your **SmartDust device remote debug key**
 - **Jenkins**
 - Installed **Android SDK + ADB**
 - Installed **Java JDK 21**
 - Dust source code: `https://github.com/damiant/dust`
 
 ---
+## SmartDust Device Setup
 
-## 🔌 Step 1: Connect to Device
+Enable SmartDust Remote Debug and obtain the ADB endpoint as described in
+[Android Test Setup](./android-test-setup.md#step-1-connect-to-device).
 
-1. Navigate to Dashboard
-2. Click **Remote debug** in the device card (top-left corner or settings)
-3. Enable remote ADB access
-
-![Smart Dust lab remote debug](/img/remote_debug.png)
-
-4. Copy the generated ADB command, e.g.:
-
-```bash
-adb connect 123.45.67.89.smartdust.me:5555
-```
-
-5. Paste into your terminal and run it
-6. Back in the dashboard, accept the ADB key request (if no popup, toggle remote debug off/on)
-
-Verify your device is connected:
-
-```bash
-adb devices
-```
-
-Expected output:
-
-```text
-List of devices attached
-123.45.67.89.smartdust.me:5555   device
-```
-
-If it says `offline`, retry the connection.
+Keep the generated SmartDust ADB address. It will be used in the Jenkins job configuration below.
 
 ---
 
-## Step 2: Upload your app to the device.
-
-We will upload based on the Dust app: `https://github.com/damiant/dust`.
-
-So, firstly build the app, for example, using:
-
-```bash
-bunx ng build
-```
-
-Then deploy the app using:
-
-```bash
-npx cap run android
-```
-
-You should see the app on your device.
-
-![Smart Dust lab apk upload](/img/apk_upload.png)
-
-If not, check your terminal for potential issues.
-
----
-
-## Step 3: Start Jenkins
+## Step 1: Start Jenkins
 
 Start Jenkins, for example using the Jenkins WAR file:
 
@@ -102,7 +50,7 @@ If this is your first Jenkins launch, complete the setup wizard and install the 
 
 ---
 
-## Step 4: Create a Jenkins Job
+## Step 2: Create a Jenkins Job
 
 In Jenkins:
 
@@ -121,7 +69,7 @@ SmartDust-Espresso
 
 ---
 
-## Step 5: Configure the SmartDust Test
+## Step 3: Configure the SmartDust Test
 
 Paste the following script into the **Execute shell** build step:
 
@@ -178,7 +126,7 @@ This job:
 
 ---
 
-## ▶️ Step 6: Run the Jenkins Test
+## ▶️ Step 4: Run the Jenkins Test
 
 Click:
 
