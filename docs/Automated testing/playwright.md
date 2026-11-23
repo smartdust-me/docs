@@ -11,53 +11,19 @@ Playwright documentation:
 
 ## Prerequisites
 Before you begin, ensure you have the following installed:
-- A **SmartDust** account
-- Your **SmartDust device remote debug key**
 - **Node.js v20+**
 - Installed **Android SDK + ADB**
-- Optional: your `.apk` or app build process ready
+
+---
+## Setup
+
+Before continuing, complete the [Android Test Setup](./android-test-setup.md).
+
+It covers connecting a SmartDust Android device through Remote Debug and deploying the Dust application used in this example.
 
 ---
 
-## 🔌 Step 1: Connect to Device
-1. Navigate to Dashboard
-2. Click **Remote debug** in the device card (top-left corner or settings)
-3. Enable remote ADB access
-
-![Smart Dust lab remote debug](/img/remote_debug.png)
-
-4. Copy the generated ADB command, e.g.:
-
-```bash
-adb connect 123.45.67.89.smartdust.me:5555
-```
-5. Paste into your terminal and run it
-6. Back in the dashboard, accept the ADB key request (if no popup, toggle remote debug off/on)
-   Verify your device is connected:
-```bash
-adb devices
-```
-Expected output:
-```bash
-List of devices attached
-123.45.67.89.smartdust.me:5555   device
-```
-If it says offline, retry the connection.
-
----
-
-## Step 2: Upload your app to the device.
-We will upload based on the Dust app: `https://github.com/damiant/dust`.
-So, firstly build the app, for example, using `bunx ng build` and then deploy the app using `npx cap run android`.
-You should see the app on your device.
-
-![Smart Dust lab apk upload](/img/apk_upload.png)
-
-If not, check you terminal for potential issues.
-
----
-
-## Step 3: Install Playwright
+## Step 1: Install Playwright
 You can install Playwright using the official generator:
 
 ```bash
@@ -81,7 +47,7 @@ npx playwright test
 
 ---
 
-## Step 4: Write Your Test:
+## Step 2: Write Your Test:
 We will test the connection with the device by simply taking a screenshot:
 
 ```bash
@@ -114,7 +80,7 @@ import fs from 'fs';
 
 ---
 
-## ▶️ Step 5: Run Your Tests
+## ▶️ Step 3: Run Your Tests
 You can now simply run the playwright tests on your device using:
 ```bash
 npx tsx NAME_OF_THE_TEST.ts
