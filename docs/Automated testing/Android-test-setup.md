@@ -60,7 +60,25 @@ Build the Dust application:
 bunx ng build
 ```
 
-Deploy it to the connected Android device:
+Sync the application with the Android project:
+
+```bash
+npx cap sync android
+```
+
+Build the Android APK:
+
+```bash
+./android/gradlew -p android assembleDebug
+```
+
+Install the APK on the connected Android device:
+
+```bash
+adb -s example.smartdust.me:5555 install -r android/app/build/outputs/apk/debug/app-debug.apk
+```
+
+Launch the Dust application:
 
 ```bash
 adb -s example.smartdust.me:5555 shell monkey -p nexus.concepts.dust -c android.intent.category.LAUNCHER 1
