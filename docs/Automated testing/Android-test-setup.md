@@ -63,7 +63,7 @@ bunx ng build
 Deploy it to the connected Android device:
 
 ```bash
-npx cap run android
+adb -s example.smartdust.me:5555 shell monkey -p nexus.concepts.dust -c android.intent.category.LAUNCHER 1
 ```
 
 You should see Dust on the SmartDust Lab device.
